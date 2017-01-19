@@ -1,4 +1,4 @@
-package com.kerbel.GeoQuiz
+package com.kerbel.GeoQuiz.android
 
 import android.app.Activity
 import android.os.Bundle

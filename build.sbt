@@ -9,7 +9,8 @@ lazy val commonSettings = Seq(
 	)
 
 lazy val core = (project in file("core")).settings(commonSettings: _*)
-lazy val android = (project in file("android")).settings(commonSettings: _*).aggregate(core)
+lazy val android = (project in file("android")).settings(commonSettings: _*)
+                                               .aggregate(core)
 
 
 lazy val commonLibs =    
