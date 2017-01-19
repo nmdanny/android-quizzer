@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="linkedExternalProjectsSettings">
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="jdk" value="Android API 25 Platform" />
+        <option name="modules">
+          <set>
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-animated-vector-drawable-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-animated-vector-drawable-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-appcompat-v7-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-appcompat-v7-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-cardview-v7-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-cardview-v7-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-design-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-design-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-gridlayout-v7-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-gridlayout-v7-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-recyclerview-v7-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-recyclerview-v7-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-compat-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-compat-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-core-ui-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-core-ui-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-core-utils-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-core-utils-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-fragment-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-fragment-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-media-compat-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-media-compat-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-v4-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-v4-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-vector-drawable-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-support-vector-drawable-25.1.0/project" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-transition-25.1.0" />
+            <option value="$USER_HOME$/.android/sbt/exploded-aars/com.android.support-transition-25.1.0/project" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/android" />
+            <option value="$PROJECT_DIR$/android/project" />
+            <option value="$PROJECT_DIR$/android/target/android/intermediates/aars/localAAR-protify-agent.aar" />
+            <option value="$PROJECT_DIR$/android/target/android/intermediates/aars/localAAR-protify-agent.aar/project" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/project" />
+            <option value="$PROJECT_DIR$/project" />
+          </set>
+        </option>
+        <option name="resolveJavadocs" value="true" />
+        <option name="resolveSbtClassifiers" value="true" />
+        <option name="sbtVersion" value="0.13.13" />
+      </SbtProjectSettings>
+    </option>
+    <option name="maximumHeapSize" value="2048" />
+    <option name="vmParameters" value="-XX:MaxPermSize=2048M" />
+  </component>
+</project>
