@@ -1,20 +1,23 @@
-scalaVersion := "2.11.8"
 
-enablePlugins(AndroidApp)
-useSupportVectors
+lazy val commonSettings = Seq(
+	name := "GeoQuiz",
+	organization := "com.kerbel",
+	version := "0.1.0",
+	versionCode := Some(1),
+	scalaVersion := "2.11.8",
+	libraryDependencies := commonLibs
+	)
 
-versionCode := Some(1)
-version := "0.1-SNAPSHOT"
+lazy val core = (project in file("core")).settings(commonSettings: _*)
+lazy val android = (project in file("android")).settings(commonSettings: _*).aggregate(core)
 
-instrumentTestRunner :=
-  "android.support.test.runner.AndroidJUnitRunner"
 
-platformTarget := "android-25"
-
-javacOptions in Compile ++= "-source" :: "1.7" :: "-target" :: "1.7" :: Nil
-
-libraryDependencies ++=
-  "com.android.support" % "appcompat-v7" % "24.0.0" ::
-  "com.android.support.test" % "runner" % "0.5" % "androidTest" ::
-  "com.android.support.test.espresso" % "espresso-core" % "2.2.2" % "androidTest" ::
-  Nil
+lazy val commonLibs =    
+    "org.scalaz" %% "scalaz-core" % "7.2.8" ::
+    "io.argonaut" %% "argonaut" % "6.1" ::
+    "io.monix" %% "monix" % "2.1.2" ::
+    "io.monix" %% "monix-scalaz-72" % "2.1.2" ::
+    "com.squareup.okhttp3" % "okhttp" % "3.5.0" ::
+    "org.scalatest" %% "scalatest" % "3.0.1" % "test" ::
+    "io.taig" %% "communicator" % "3.0.0" ::
+    Nil
