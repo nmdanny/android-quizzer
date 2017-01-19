@@ -1,5 +1,4 @@
-name := "GeoQuiz.android"
-
+name := "GeoQuiz-android"
 enablePlugins(AndroidApp)
 enablePlugins(AndroidProtify)
 
@@ -7,7 +6,7 @@ allDevices in Android := true
 
 fork in Test := true
 
-/* fuck proguard, who cares about file sizes anyway? */
+/* disable proguard */
 useProguard in Test := false
 useProguard in Android := false
 useProguard := false

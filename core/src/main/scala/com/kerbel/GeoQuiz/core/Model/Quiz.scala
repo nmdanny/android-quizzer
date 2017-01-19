@@ -18,7 +18,7 @@ case class Quiz(questions: Set[QuizEntry#Question]) {
 }
 
 object Quiz {
-  import com.kerbel.GeoQuiz.Service.QuizService
+  import com.kerbel.GeoQuiz.core.Service.QuizService
   def fromService[M[_]](count: Int)(implicit m: Monad[M], quizService: QuizService[QuizEntry,M]) : M[Quiz] = for {
     seq <- quizService.getQuizzes(count)
   } yield Quiz(seq.map(_.mkQuestion).toSet)

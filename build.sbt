@@ -1,17 +1,17 @@
 
 lazy val commonSettings = Seq(
-	name := "GeoQuiz",
-	organization := "com.kerbel",
-	version := "0.1.0",
-	versionCode := Some(1),
-	scalaVersion := "2.11.8",
-	libraryDependencies := commonLibs
-	)
+  name := "GeoQuiz",
+  organization := "com.kerbel",
+  version := "0.1.0",
+  versionCode := Some(1),
+  scalaVersion := "2.11.8",
+  libraryDependencies := commonLibs
+  )
 
 lazy val core = (project in file("core")).settings(commonSettings: _*)
-lazy val android = (project in file("android")).settings(commonSettings: _*)
-                                               .aggregate(core)
+lazy val android = (project in file("android"))
                                                .dependsOn(core)
+											   .settings(commonSettings: _*)
 
 
 lazy val commonLibs =    

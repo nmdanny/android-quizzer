@@ -1,2 +1,2 @@
-name := "GeoQuiz.core"
 exportJars := true
+name := "GeoQuiz-core "
