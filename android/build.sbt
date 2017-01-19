@@ -1,3 +1,5 @@
+name := "GeoQuiz.android"
+
 enablePlugins(AndroidApp)
 enablePlugins(AndroidProtify)
 
