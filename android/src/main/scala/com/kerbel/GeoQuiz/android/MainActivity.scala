@@ -4,7 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.graphics.drawable.Animatable
-import com.kerbel.GeoQuiz.core.Service._
+import com.kerbel.GeoQuiz.core.service._
 
 class MainActivity extends AppCompatActivity with TypedFindView {
     // allows accessing `.value` on TR.resource.constants

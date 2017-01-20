@@ -1,4 +1,4 @@
-package com.kerbel.GeoQuiz.core.Service
+package com.kerbel.GeoQuiz.core.service
 
 
 /**

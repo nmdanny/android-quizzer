@@ -1,95 +1,60 @@
-package com.kerbel.GeoQuiz.core.Model
+package com.kerbel.GeoQuiz.core.model
 
 import argonaut.{DecodeJson, DecodeResult}
-import com.kerbel.GeoQuiz.core.Model.Difficulty.Difficulty
+import com.kerbel.GeoQuiz.core.model.Difficulty.Difficulty
 
-/**
-  * The difficulty of the quiz.
-  */
-object Difficulty extends Enumeration {
-  type Difficulty = Value
-  val Easy,Medium,Hard = Value
-}
+
+
+
+
 
 /**
   * A quiz entry.
+  *
   * @see See below for implementations.
-  *      [[com.kerbel.GeoQuiz.Model.MultiChoiceQuestion]]
-  *      [[com.kerbel.GeoQuiz.Model.YesNoQuestion]]
+  *      [[com.kerbel.GeoQuiz.core.model.MultiChoiceQuestion]]
+  *      [[com.kerbel.GeoQuiz.core.model.YesNoQuestion]]
   *
   */
-sealed trait QuizEntry { outer =>
+trait Question { outer =>
   type Choice
   val category: String
   val difficulty: Difficulty
   val question: String
 
   def choiceIsCorrect(choice: Choice): Boolean
-  final def answer(choice: Choice): Question = Question(Some(choice))
-  final def mkQuestion: Question = Question(None)
-  final case class Question (answer: Option[Choice]) {
+  final def answer(choice: Choice): Answer = Answer(Some(choice))
+  final case class Answer (answer: Option[Choice]) {
     val isCorrect : Boolean = answer.exists(ans => choiceIsCorrect(ans))
     val isIncorrect: Boolean = answer.exists(ans => !choiceIsCorrect(ans))
     val isAnswered: Boolean = answer.isDefined
     val status: AnswerStatus = if (!isAnswered) Unanswered
                                else if (isCorrect) Correct
                                else Incorrect
-    val entry: QuizEntry = outer
-    def changeAnswer(choice: Choice) = Question(Some(choice))
+    val question: Question = outer
   }
-  sealed trait AnswerStatus
-  final case object Correct extends AnswerStatus
-  final case object Incorrect extends AnswerStatus
-  final case object Unanswered extends AnswerStatus
+
 }
 
 /***
   * A quiz entry which provides certain choices/possibilities.
   */
-trait ChoiceQuestion extends { this: QuizEntry =>
+trait ChoiceQuestion extends Question {
   /**
     * All possible answers
     */
   val allAnswers: Seq[Choice]
 }
 
-/**
-  * A trivia question that is either true or false.
-  * @param category The question's category
-  * @param difficulty The question's difficulty
-  * @param question The statement
-  * @param isTrue Is the statement true?
-  */
-final case class YesNoQuestion(category: String, difficulty: Difficulty, question: String,isTrue: Boolean) extends QuizEntry with ChoiceQuestion {
-  type Choice = Boolean
-  override def choiceIsCorrect (choice: Boolean): Boolean = choice == isTrue
-  override val allAnswers: Seq[Choice] = Seq(true,false)
-}
-
-/**
-  * A multiple choice question
-  * @param category The question's category
-  * @param difficulty The question's difficulty
-  * @param question The question
-  * @param correctAnswer The correct answer
-  * @param incorrectAnswers A list of incorrect answers.
-  */
-final case class MultiChoiceQuestion(category: String, difficulty: Difficulty, question: String, correctAnswer: String, incorrectAnswers: Seq[String]) extends QuizEntry with ChoiceQuestion {
-  type Choice = String
-  override def choiceIsCorrect (choice: String): Boolean = choice == correctAnswer
-  override val allAnswers : Seq[Choice] = incorrectAnswers :+ correctAnswer
-}
-
-
-object QuizEntry {
-  implicit def decodeResponse : DecodeJson[Seq[QuizEntry]] = DecodeJson(c => c.downField("results").as[Seq[QuizEntry]])
+object Question {
+  implicit def decodeResponse : DecodeJson[Seq[Question]] = DecodeJson(c => c.downField("results").as[Seq[Question]])
   implicit def DecodeDifficulty : DecodeJson[Difficulty] = DecodeJson(c => c.focus.string.map(_.toLowerCase) match {
     case Some("easy") => DecodeResult.ok(Difficulty.Easy)
     case Some("medium") => DecodeResult.ok(Difficulty.Medium)
     case Some("hard") => DecodeResult.ok(Difficulty.Hard)
     case _ => DecodeResult.fail("Failed to decode Difficulty - is not easy,medium or hard.",c.history)
   })
-  implicit def DecodeQuizEntry : DecodeJson[QuizEntry] = DecodeJson(c => for {
+  implicit def DecodeQuizEntry : DecodeJson[Question] = DecodeJson(c => for {
     quizType <- (c --\ "type").as[String]
     question <- quizType match {
       case "boolean" => c.as[YesNoQuestion]
